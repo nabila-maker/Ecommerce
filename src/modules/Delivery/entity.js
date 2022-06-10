@@ -12,8 +12,6 @@ class DeliveryEntity {
    
     }
 
-
-
   }
   
   export default DeliveryEntity;

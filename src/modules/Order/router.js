@@ -6,7 +6,7 @@ class OrderRouter {
     }
   
     initializeRoutes(orderController) {
-      this.router.route('/product')
+      this.router.route('/order')
         .get(orderController.getOne)
         .get(orderController.getAllByUser)
 

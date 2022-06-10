@@ -9,11 +9,6 @@ class ProductEntity {
       this.type = type;
     }
   
-    validate() {
-      //if (!this.mail || !this.password || !this.name || !this.lastname || !this.address || !this.tel || !this.type) return false;
-      return true;
-    }
-  
   
   }
   

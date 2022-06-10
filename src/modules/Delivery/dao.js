@@ -19,7 +19,7 @@ class DeliveryDao extends Model {
 
   static associate(models) {
     // define association here
-    // this.belongsTo(models.Service);
+    // this.belongsTo(user.Service);
     return this;
   }
 }
