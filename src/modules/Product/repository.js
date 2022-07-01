@@ -9,6 +9,7 @@ class ProductRepository {
   
     async create(productEntity) {
       return await this.productDAO.create(productEntity);
+     
     }
   
     async findById(productEntity) {

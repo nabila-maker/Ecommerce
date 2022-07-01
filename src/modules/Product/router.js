@@ -7,9 +7,10 @@ class ProductRouter {
   
     initializeRoutes(productController) {
       this.router.route('/product')
-        .get(productController.getOne)
+        
+         .get(productController.getAll)
         .post(productController.create)
-        //.patch(productController.update)
+        .patch(productController.update)
         .delete(productController.delete);      
     }
   }

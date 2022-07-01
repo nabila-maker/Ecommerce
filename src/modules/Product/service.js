@@ -4,24 +4,25 @@ import { ApiError } from '../../helpers/error';
 class ProductService {
   constructor(productRepository) {
     this.productRepo = productRepository;
+   
   }
 
   async getAll() {
     const product = await this.productRepo.findAll();
-    return product.map((product) => new productEntity(product));
+    return product.map((product) => new ProductEntity(product));
   }
 
   async create(productData) {
-    const productEntity = new productEntity(productData);
+    const productEntity = new ProductEntity(productData);
     const newProduct = await this.productRepo.create(productEntity);
-    return new ProductEntity(newProduct);
+    return newProduct;
   }
 
-  async getOne(productData) {
-    const productEntity = new ProductEntity(productData);
-    const product = await this.productRepo.findById(productEntity);
-    return product;
-  }
+  // async getOne(productData) {
+  //   const productEntity = new ProductEntity(productData);
+  //   const product = await this.productRepo.findById(productEntity);
+  //   return product;
+  // }
 
   async update(productData) {
     const productEntity = new ProductEntity(productData);

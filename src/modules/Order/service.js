@@ -1,55 +1,41 @@
-class OrderController {
-    constructor(orderService) {
-      this.orderService = orderService;
-    }
-  
-    getAll = async ({ res, next }) => {
-      try {
-        const orders = await this.orderService.getAll();
-        res.status(200).json(orders);
-      } catch (err) {
-        next(err);
-      }
-    };
-  
-    create = async (req, res, next) => {
-      try {
-        const orderCreate = await this.orderService.create({ ...req.body });
-        res.status(201).json(orderCreate);
-      } catch (err) {
-        next(err);
-      }
-    };
-  
-    getOne = async (req, res, next) => {
-      try {
-        const service = await this.orderService.getOne({ ...req.body });
-  
-        res.status(201).json(service);
-      } catch (err) {
-        next(err);
-      }
-    };
-  
-    getAllByUser = async (req, res, next) => {
-      try {
-        const service = await this.orderService.getAllByUser({ ...req.body });
-  
-        res.status(201).json(service);
-      } catch (err) {
-        next(err);
-      }
-    };
-  
-  
-    calcul = async (req, res, next) => {
-      try {
-        const calcul = await this.orderService.calcul({ ...req.body });
-        res.status(201).json(calcul);
-      } catch (err) {
-        next(err);
-      }
-    };
+import OrderEntity from './entity';
+import { ApiError } from '../../helpers/error';
+
+class OrderService {
+  constructor(orderRepository) {
+    this.orderRepo = orderRepository;
   }
-  
-  export default OrderController;
+
+  async getAll() {
+    const order = await this.orderRepo.findAll();
+    return order.map((order) => new orderEntity(product));
+  }
+
+  async create(orderData) {
+    const orderEntity = new OrderEntity(orderData);
+    const newOrder = await this.orderRepo.create(orderEntity);
+    return new OrderEntity(newOrder);
+  }
+
+  async getOne(orderData) {
+    const orderEntity = new OrderEntity(orderData);
+    const order = await this.orderRepo.findById(orderEntity);
+    return order;
+  }
+
+  async update(orderData) {
+    const orderEntity = new OrderEntity(orderData);
+    const orderFound = await this.orderRepo.findById(orderEntity);
+    const order = orderFound.update(orderEntity);
+    return order;
+  }
+
+  async delete(orderData) {
+    const orderEntity = new OrderEntity(orderData);
+    const orderFound = await this.orderRepo.findById(orderEntity);
+    const order = orderFound.delete(orderFound);
+    return order;
+  }
+}
+
+export default OrderService;

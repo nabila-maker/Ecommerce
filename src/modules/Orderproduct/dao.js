@@ -4,14 +4,14 @@ import db from '../../config/database';
 
 const { Model, DataTypes } = pkg;
 
-class OrderDao extends Model {
+class OrderproductDao extends Model {
   static init(sequelize) {
     return super.init({
       date: DataTypes.DATE,
       total: DataTypes.STRING,
       status: DataTypes.STRING,
 
-    }, { sequelize, modelName: 'Order' });
+    }, { sequelize, modelName: 'Orderproduct' });
   }
 
   static associate(models) {
@@ -21,6 +21,6 @@ class OrderDao extends Model {
   }
 }
 
-OrderDao.init(db.sequelize);
+OrderproductDao.init(db.sequelize);
 
-export default OrderDao;
+export default OrderproductDao;
