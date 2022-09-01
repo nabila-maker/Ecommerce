@@ -10,7 +10,7 @@ class UserDao extends Model {
       name: DataTypes.STRING,
       email: DataTypes.STRING,
       password: DataTypes.STRING,
-      type: DataTypes.STRING,
+     
 
     }, { sequelize, modelName: 'User' });
   }

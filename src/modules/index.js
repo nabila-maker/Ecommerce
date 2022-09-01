@@ -1,10 +1,9 @@
 import { userRouter } from './User';
 import { productRouter } from './Product';
-import { orderRouter } from './Order';
-import { deliveryRouter } from './Delivery';
+import { reservationRouter } from './Reservation';
 
 
 
-const routes = [userRouter, productRouter, orderRouter, deliveryRouter];
+const routes = [userRouter, productRouter, reservationRouter];
 
  export default routes;

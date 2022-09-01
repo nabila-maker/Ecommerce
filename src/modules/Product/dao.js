@@ -10,7 +10,6 @@ class ProductDao extends Model {
       name: DataTypes.STRING,
       description: DataTypes.STRING,
       price: DataTypes.STRING,
-      type: DataTypes.STRING,
 
     }, { sequelize, modelName: 'Product' });
   }

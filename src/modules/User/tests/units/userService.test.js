@@ -20,6 +20,7 @@ describe('user use case', () => {
       expect(e.statusCode).toBe(201);
     });
   });
+})
 
   it('Should throw a error if userdata is empty or null', async () => {
     try {

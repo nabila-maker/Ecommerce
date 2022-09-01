@@ -1,12 +1,12 @@
-class OrderproductController {
-    constructor(orderproductService) {
-      this.orderproductService = orderproductService;
+class ReservationController {
+    constructor(reservationService) {
+      this.reservationService = reservationService;
     }
   
     getAll = async ({ res, next }) => {
       try {
-        const ordersproduct = await this.orderproductService.getAll();
-        res.status(200).json(ordersproduct);
+        const reservations = await this.reservationService.getAll();
+        res.status(200).json(reservations);
       } catch (err) {
         next(err);
       }
@@ -14,8 +14,8 @@ class OrderproductController {
   
     create = async (req, res, next) => {
       try {
-        const orderproductCreate = await this.orderproductService.create({ ...req.body });
-        res.status(201).json(orderproductCreate);
+        const reservationCreate = await this.reservationService.create({ ...req.body });
+        res.status(201).json(reservationCreate);
       } catch (err) {
         next(err);
       }
@@ -23,7 +23,7 @@ class OrderproductController {
   
     getOne = async (req, res, next) => {
       try {
-        const service = await this.orderproductService.getOne({ ...req.body });
+        const service = await this.reservationService.getOne({ ...req.body });
   
         res.status(201).json(service);
       } catch (err) {
@@ -33,7 +33,7 @@ class OrderproductController {
   
     getAllByUser = async (req, res, next) => {
       try {
-        const service = await this.orderproductService.getAllByUser({ ...req.body });
+        const service = await this.reservationService.getAllByUser({ ...req.body });
   
         res.status(201).json(service);
       } catch (err) {
@@ -44,7 +44,7 @@ class OrderproductController {
   
     calcul = async (req, res, next) => {
       try {
-        const calcul = await this.orderproductService.calcul({ ...req.body });
+        const calcul = await this.reservationService.calcul({ ...req.body });
         res.status(201).json(calcul);
       } catch (err) {
         next(err);
@@ -52,4 +52,4 @@ class OrderproductController {
     };
   }
   
-  export default OrderproductController;
+  export default ReservationController;

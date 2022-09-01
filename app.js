@@ -8,9 +8,18 @@ import config from './src/config/env';
 import { csrf } from './src/middlewares';
 import Logger from './src/helpers/logger';
 import routes from './src/modules';
+import cors from "cors"
 
 const logger = new Logger();
-const middlewares = { cookieParser, csrf, morgan };
+const corsSetup = cors(
+  {
+    credentials: true,
+    origin:"http://localhost:3001"
+  }
+
+);
+
+const middlewares = { cookieParser, csrf, morgan, corsSetup};
 const application = new Server(express, routes, middlewares, logger);
 
 (async () => {

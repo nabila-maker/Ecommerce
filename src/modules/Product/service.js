@@ -33,7 +33,7 @@ class ProductService {
 
   async delete(productData) {
     const productEntity = new ProductEntity(productData);
-    const productFound = await this.productRepo.findById(productEntity);
+    const productFound = await this.productRepo.findOne(productEntity);
     const product = productFound.delete(productFound);
     return product;
   }

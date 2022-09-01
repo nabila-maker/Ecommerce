@@ -1,3 +1,5 @@
+
+
 class UserRouter {
   constructor(router, auth, userController) {
     this.router = router;
@@ -7,7 +9,8 @@ class UserRouter {
 
   initializeRoutes(userController, auth) {
     this.router.route('/user')
-      .get(userController.getOneByMail)
+      .get(userController.login)
+      // .get(userController.getAll)
       .post(userController.register)
       //.patch(userController.update)
       .delete(userController.delete);

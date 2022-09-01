@@ -21,7 +21,7 @@ class UserRepository {
   }
 
   async findByMail(userEntity) {
-    return await this.userDAO.findOne({ where: { mail: userEntity.mail } });
+    return await this.userDAO.findOne({ where: { email: userEntity.email } });
   }
 
   async update(userEntity) {

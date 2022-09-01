@@ -56,6 +56,7 @@ class ProductController {
         } catch (err) {
           next(err);
         }
+
       };
 
     

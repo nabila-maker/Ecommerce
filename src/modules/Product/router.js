@@ -10,7 +10,7 @@ class ProductRouter {
         
          .get(productController.getAll)
         .post(productController.create)
-        .patch(productController.update)
+        .put(productController.update)
         .delete(productController.delete);      
     }
   }

@@ -14,11 +14,22 @@ class UserService {
 
   async register(userData) {
     const userEntity = new UserEntity(userData);
-    if (!userEntity.validate()) { throw new ApiError(400, 'Missing required  fields'); }
+    //  try { 
+     if (!userEntity.validate()) { throw new ApiError(400, 'Missing required  fields'); }
+  
+    
+      const userFound = await this.userRepo.findByMail(userEntity);
+      console.log(userFound)
+   
+    if (userFound) {throw new ApiError(400, "Ressource existante", "Ce User existe déjà");
+   
+    }else{
+       const newUser = await this.userRepo.create(userEntity);
+    return new UserEntity(newUser);  
+    }
 
-    const newUser = await this.userRepo.create(userEntity);
-   // await this.mailerService.sendMail(userEntity, 'Creation du votre compte', 'Votre compte est créé');
-    return new UserEntity(newUser);
+
+  
   }
 
   async getOne(userData) {
@@ -49,12 +60,14 @@ class UserService {
 
   async login(userData) {
     const userEntity = new UserEntity(userData);
-    if (!userEntity.validateLogin()) { throw new ApiError(400, 'Missing required mail and password  fields'); }
+    // console.log(userEntity)
+    if (!userEntity.validateLogin()) { throw new ApiError(400, 'Missing required mail and password fields'); }
 
     const user = await this.userRepo.findByMail(userEntity);
     if (!user) { throw new ApiError(400, 'User with the specified email does not exists'); }
 
     const passwordMatch = await this.userRepo.compareHash(userEntity.password, user.password);
+    console.log(passwordMatch)
     if (!passwordMatch) { throw new ApiError(400, 'User password do not match'); }
 
     return new UserEntity(user);

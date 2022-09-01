@@ -17,7 +17,8 @@ class Server {
     this.app.use(express.json());
   }
 
-  initializeMiddlewares({ cookieParser, csrf, morgan }, logger) {
+  initializeMiddlewares({ cookieParser, csrf, morgan, corsSetup }, logger) {
+    this.app.use(corsSetup);
     this.app.use(cookieParser());
     this.app.use(morgan('combined', { stream: logger.stream }));
     this.app.get('/csrf', csrf, (req, res) => {
