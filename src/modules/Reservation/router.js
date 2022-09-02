@@ -7,8 +7,9 @@ class ReservationRouter {
   
     initializeRoutes(reservationController) {
       this.router.route('/reservation')
-        .get(reservationController.getOne)
-        .get(reservationController.getAllByUser)
+        //  .get(reservationController.getOne)
+        .get(reservationController.findById)
+        .post(reservationController.create)
 
     }
   }

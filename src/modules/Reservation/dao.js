@@ -9,12 +9,12 @@ class ReservationDao extends Model {
     return super.init({
    
       date: DataTypes.DATE,
-    }, { sequelize, modelName: 'Reservation' });
+    }, { sequelize, modelName: 'Reservation', });
   }
 
   static associate(models) {
-    this.belongsTo(models.User, {through: 'ReservationProduct'});
     this.belongsToMany(models.Product, {through: 'ReservationProduct'})
+    this.belongsTo(models.User)
     return this;
   }
 }

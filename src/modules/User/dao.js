@@ -18,6 +18,7 @@ class UserDao extends Model {
   static associate(models) {
     // define association here
     // this.belongsTo(models.Service);
+    this.hasMany(models.Reservation);
     return this;
   }
 }

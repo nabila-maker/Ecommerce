@@ -13,18 +13,19 @@ class ReservreservationRepository {
     return await this.reservationDAO.create(reservationEntity);
   }
 
-  async findById(reservationEntity) {
-    return await this.reservationDAO.findOne({
-      where: { id: reservationEntity.id },
+  async findById(UserId) {
+    return await this.reservationDAO.findAll({
       include: [{
         model: ProductDao,
       }],
+      through: {model: 'UserReservation', where : {UserId}},
+      raw: true
     });
   }
 
-  async findByUser(reservationEntity) {
-    return await this.reservationDAO.findAll({ where: { UserId: reservationEntity.UserId } });
-  }
+  async GetAllByUser(reservationEntity) {
+    return await this.reservationDAO.getAll({ 
+      through: {model: 'UserReservation', where : {UserId}}, });}
 
  
 }

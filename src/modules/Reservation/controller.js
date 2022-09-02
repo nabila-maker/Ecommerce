@@ -33,23 +33,37 @@ class ReservationController {
   
     getAllByUser = async (req, res, next) => {
       try {
-        const service = await this.reservationService.getAllByUser({ ...req.body });
-  
+        console.log(req.body)
+        const { UserId } = req.body;
+        
+        const service = await this.reservationService.getAllByUser(UserId);
         res.status(201).json(service);
       } catch (err) {
         next(err);
       }
+
+      
+    
+    
     };
-  
-  
-    calcul = async (req, res, next) => {
+
+    findById = async (req, res, next) => {
       try {
-        const calcul = await this.reservationService.calcul({ ...req.body });
-        res.status(201).json(calcul);
+        console.log(req.body)
+        const { UserId } = req.body;
+        
+        const service = await this.reservationService.getAllByUser(UserId);
+        res.status(201).json(service);
       } catch (err) {
         next(err);
       }
+
+      
+    
+    
     };
+  
+  
   }
   
   export default ReservationController;

@@ -1,10 +1,10 @@
 class ReservationEntity {
     constructor({
-      id, date,user_id,  
+      id, date, UserId,  
     }) {
       this.id = id;
       this.date = date;
-      this.user_id = user_id;
+      this.UserId = UserId;
      
    
     }
